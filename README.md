@@ -1,5 +1,7 @@
 # csk-cursor
 
+    支持Version: 0.48.9
+
 ## 项目来源  
 
 [cursor-auto-free](https://github.com/chengazhen/cursor-auto-free)
