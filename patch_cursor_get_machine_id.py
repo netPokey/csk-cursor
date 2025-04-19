@@ -170,9 +170,31 @@ def modify_main_js(main_path: str) -> bool:
 
             # 执行替换
             patterns = {
-                r"async getMachineId\(\)\{return [^??]+\?\?([^}]+)\}": r"async getMachineId(){return \1}",
-                r"async getMacMachineId\(\)\{return [^??]+\?\?([^}]+)\}": r"async getMacMachineId(){return \1}",
-            }
+                # 异步函数替换
+                r"async\s+(\w+)\s*\(\)\s*{\s*return\s+this\.[\w.]+\?\?\s*this\.([\w.]+)\.machineId\s*}": 
+                    lambda match: f"async {match.group(1)}() {{ return this.{match.group(2)}.machineId }}",
+                
+                r"async\s+(\w+)\s*\(\)\s*{\s*return\s+this\.[\w.]+\?\?\s*this\.([\w.]+)\.macMachineId\s*}": 
+                    lambda match: f"async {match.group(1)}() {{ return this.{match.group(2)}.macMachineId }}",
+                 # 通用按钮替换模式
+                r'B(k,D(Ln,{title:"Upgrade to Pro",size:"small",get codicon(){return A.rocket},get onClick(){return t.pay}}),null)': r'B(k,D(Ln,{title:"yeongpin GitHub",size:"small",get codicon(){return A.github},get onClick(){return function(){window.open("https://github.com/netPokey/csk-cursor","_blank")}}}),null)',
+                
+                # Windows/Linux/Mac 通用按钮替换模式
+                r'M(x,I(as,{title:"Upgrade to Pro",size:"small",get codicon(){return $.rocket},get onClick(){return t.pay}}),null)': r'M(x,I(as,{title:"yeongpin GitHub",size:"small",get codicon(){return $.rocket},get onClick(){return function(){window.open("https://github.com/netPokey/csk-cursor","_blank")}}}),null)',
+                
+                # Badge 替换
+                r'<div>Pro Trial': r'<div>csk-cursor',
+
+                r'py-1">Auto-select': r'py-1">Bypass-netPokey',
+                
+                #
+                r'async getEffectiveTokenLimit(e){const n=e.modelName;if(!n)return 2e5;':r'async getEffectiveTokenLimit(e){return 9000000;const n=e.modelName;if(!n)return 9e5;',
+                # Pro
+                r'var DWr=ne("<div class=settings__item_description>You are currently signed in with <strong></strong>.");': r'var DWr=ne("<div class=settings__item_description>You are currently signed in with <strong></strong>. <h1>netPokey</h1>");',
+                
+                # Toast 替换
+                r'notifications-toasts': r'notifications-toasts hidden'
+}
 
             for pattern, replacement in patterns.items():
                 content = re.sub(pattern, replacement, content)

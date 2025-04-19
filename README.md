@@ -1,3 +1,13 @@
+#csk-cursor
+
+##项目来源
+[cursor-auto-free](https://github.com/chengazhen/cursor-auto-free)
+
+[fake-cursor](https://github.com/Angels-Ray/fake-cursor)
+[cursor-free-vip](https://github.com/yeongpin/cursor-free-vip)
+
+
+
 # Cursor Pro 自动化工具使用说明
 
 
