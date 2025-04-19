@@ -1,8 +1,8 @@
 # csk-cursor
 
 ## 项目来源
-[cursor-auto-free](https://github.com/chengazhen/cursor-auto-free)
 
+[cursor-auto-free](https://github.com/chengazhen/cursor-auto-free)
 [fake-cursor](https://github.com/Angels-Ray/fake-cursor)
 [cursor-free-vip](https://github.com/yeongpin/cursor-free-vip)
 
