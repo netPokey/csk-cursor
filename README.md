@@ -1,6 +1,6 @@
-#csk-cursor
+# csk-cursor
 
-##项目来源
+## 项目来源
 [cursor-auto-free](https://github.com/chengazhen/cursor-auto-free)
 
 [fake-cursor](https://github.com/Angels-Ray/fake-cursor)
